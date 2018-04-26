@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+		console.log(100)
+		setTimeout(function() {
+			console.log(200)
+		}, 1000)
+		console.log(300)
+		console.log(400)
+
+		console.log(100)
+		$.ajax({
+			url: 'xxxx',
+			success: function(result) {
+				console.log(result)
+			}
+		})
+		console.log(300)
+		console.log(400)
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+		// jquery 1.5的变化
+		var ajax = $.ajax({
+			url: 'data.json',
+			success: function() {
+
+			},
+			error: function() {
+				console.log('error')
+			}
+		})
+		console.log(ajax) // 返回一个XHR对象
+
+		var ajax = $.ajax('data.json')
+		ajax.done(function() {
+			console.log('1')
+		}).fail(function() {
+			console.log('error')
+		}).done(function() {
+			console.log()
+		})
+		// 使用jQuery Deferred
+	</script>
+</body>
+</html>

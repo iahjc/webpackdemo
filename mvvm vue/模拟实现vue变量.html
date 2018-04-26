@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+      // var vm = new Vue({
+      // 	el: '#app',
+      // 	data: {
+      // 		price: 100,
+      // 		name: 'zhangsan'
+      // 	}
+      // })
+
+      var mv = {}
+      var data = {
+      	price: 100,
+      	name: 'zhangsan'
+      }
+      // Object.defineProperty 定义属性
+      var key, value
+      for (key in data) {
+      	// 命中闭包，新建一个函数，保证key的独立作用域
+      	(function(key) {
+           Object.defineProperty(mv, key, {
+           	get: function() {
+           		console.log('get')
+           		return data[key]
+           	},
+           	set: function(newVal) {
+                console.log('set')
+                data[key] = newVal
+           	}
+           })
+      	})(key)
+      }
+	</script>
+</body>
+</html>

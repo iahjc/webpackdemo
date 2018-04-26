@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+		function Animal(name, info) {
+			this.name = name
+			this.info = info
+		}
+
+		// 普通属性的继承 不关联prototype Animal原型链上的内容并没有被Cat原型链继承
+		function Cat(name, sex, info) {
+			// call的意思可以理解为 在此处执行Animal的方法 使用Cat的作用域
+			Animal.call(this, name, info)
+			this.sex = sex
+		}
+		let info = ['1', '2']
+
+		let cat = new Cat('cat', '中性', info)
+		let cat1 = new Cat('cat1', '男', info)
+		info[1] = '222'
+		console.log(cat.info)
+		console.log(cat1.info)
+
+		// 借助原型链实现继承
+		function Dog(name, sex, info) {
+			Animal.call(this, name, info)
+		}
+
+		// 这样没有办法给父类传值 父类引用类型的值 会被共享
+		Dog.prototype = new Cat()
+
+		// 组合方式 父类构造函数执行了两次
+		function Fish(name, sex, info) {
+			Animal.call(this, name, info)
+		}
+
+		Fish.prototype = new Animal()
+
+		// 优化 无法判断是谁的实例
+		Fish.prototype = Animal.prototype
+
+
+		// 优化2 
+		Fish.prototype = Object.create(Animal.prototype)
+		Fish.prototype.constructor = Animal
+	</script>
+</body>
+</html>

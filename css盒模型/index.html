@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link href="css.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="layout">sdfsd</div>
+
+	<button id="btn">style.width</button>
+	<button id="btn2">getComputedStyle/currentStyle</button>
+	<button id="btn3">获取屏幕的位置</button>
+
+	<script>
+		document.querySelector('#btn').onclick = function () {
+			let w = document.querySelector('#layout').style.width
+			alert(`style.width 只能获得行内样式的宽高 ${w}`)
+		}
+
+		document.querySelector('#btn2').onclick = function () {
+			if (document.currentStyle) {
+				let w = document.querySelector('#layout').currentStyle.width 
+				alert(`分ie和其他浏览器 ` + w) 
+			} else {
+				let w = window.getComputedStyle(document.querySelector('#layout')).width
+				alert(`分ie和其他浏览器 ` + w) 
+			}
+		}
+
+		document.querySelector('#btn3').onclick = function () {
+			let rect = document.querySelector('#layout').getBoundingClientRect()
+			alert(`获取元素在屏幕上的宽度/高度/左距离/右距离` + rect.width + ' / ' + rect.height + ' / ' + rect.left + ' / ' + rect.right + ' / ' + rect.top)
+		}
+
+	</script>
+</body>
+</html>

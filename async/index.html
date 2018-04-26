@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+</head>
+<body>
+	<script>
+		var ajax = $.ajax('./data.json')
+		ajax.done(function() {
+			console.log('success 1')
+		}).fail(function() {
+			console.log('fail 1')
+		})
+
+		var ajax2 = $.ajax('./data.json')
+		ajax2.then(function() {
+			
+		}, function() {
+
+		})
+	</script>
+</body>
+</html>

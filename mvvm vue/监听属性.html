@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+	<script>
+		var obj = {}
+		var name = 'zhangsan'
+		Object.defineProperty(obj, "name", {
+			get: function() {
+				console.log('get')
+				return name
+			},
+			set: function(newVal) {
+				console.log('set')
+				name = newVal
+			}
+		})
+		console.log(obj.name) // 可以监听到
+		obj.name = 'list' // 可以监听到
+	</script>
+</body>
+</html>
